@@ -5,10 +5,13 @@ import { ConfigModule } from '@nestjs/config';
 import { UserService } from './user.service';
 import { PostService } from './post.service';
 import { PrismaService } from './prisma.service';
+import { HttpModule } from '@nestjs/axios';
+import { DogController } from './dog/dog.controller';
+import { DogService } from './dog/dog.service';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
-  controllers: [AppController],
-  providers: [AppService, UserService, PostService, PrismaService],
+  imports: [ConfigModule.forRoot(), HttpModule],
+  controllers: [AppController, DogController],
+  providers: [AppService, UserService, PostService, PrismaService, DogService],
 })
 export class AppModule {}
